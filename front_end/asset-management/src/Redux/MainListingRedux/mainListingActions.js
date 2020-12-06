@@ -176,5 +176,47 @@ export const edit_img = (payload, id) => (dispatch) => {
         dispatch( edit_img_failure(err) )
       });
 
+}
 
+// Delete image actions below:
+
+export const delete_img_req = () => ({
+    type: DELETE_IMAGE_REQUEST
+})
+
+export const delete_img_success = (payload) => ({
+    type: DELETE_IMAGE_SUCCESS,
+    payload
+})
+
+export const delete_img_failure = (payload) => ({
+    type: DELETE_IMAGE_FAILURE,
+    payload
+})
+
+export const delete_img = (payload) => (dispatch) => {
+
+    console.log(payload)
+    dispatch(delete_img_req())
+    axios.delete(`https://5fbcebcf3f8f90001638c720.mockapi.io/api/v1/assets/${Number(payload)}`)
+    .then( (res)=>{
+
+        console.log(res)
+        axios
+        .get("https://5fbcebcf3f8f90001638c720.mockapi.io/api/v1/assets")
+        .then((res) => {
+
+            console.log(res, "LISTINGS FETCHED")
+            dispatch(get_listings_success(res.data))
+        })
+        .catch((err) => {
+
+            dispatch(get_listings_failure(err))
+        })
+        
+    } )
+    .catch((err)=>{
+
+        console.log(err)
+    })
 }
