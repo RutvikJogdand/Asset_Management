@@ -1,0 +1,30 @@
+.icons{
+    visibility: hidden;
+}
+
+.itemContainer:hover .icons{
+    visibility: visible;
+}
+
+.editBtn, .deleteBtn{
+    cursor: pointer;
+}
+
+.editBtn{
+    margin-right: 7px;
+    color: rgba(0, 0, 255, 0.822);
+}
+
+.deleteBtn{
+    color: crimson;
+}
+
+.AddImageDiv
+{
+    border-bottom: 1px solid gray;
+    width: 87%;
+    margin: auto;
+    text-align: right;
+    padding: 15px;
+}
+

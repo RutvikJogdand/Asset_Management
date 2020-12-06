@@ -1,0 +1,19 @@
+.singleImageTitle{
+    display: flex;
+    border-bottom: 1px solid gray;
+    width: 87%;
+    margin: auto;
+}
+
+.singleImageTitle > p{
+    text-align: left;
+    flex: 3;
+}
+
+.singleImageTitle > div{
+    justify-self: right;
+    text-align: right;
+    flex: 1;
+    margin-top: 10px;
+}
+
