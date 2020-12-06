@@ -1,7 +1,9 @@
 import {GET_LISTINGS_REQUEST, GET_LISTINGS_SUCCESS, GET_LISTINGS_FAILURE, 
     SINGLE_IMAGE_REQUEST, SINGLE_IMAGE_SUCCESS, SINGLE_IMAGE_FAILURE,
     FETCH_COMMENTS_REQUEST, FETCH_COMMENTS_SUCCESS, FETCH_COMMENTS_FAILURE,
-    POST_IMAGE_REQUEST, POST_IMAGE_SUCCESS, POST_IMAGE_FAILURE} from "./mainListingActionTypes"
+    POST_IMAGE_REQUEST, POST_IMAGE_SUCCESS, POST_IMAGE_FAILURE,
+    EDIT_IMAGE_REQUEST, EDIT_IMAGE_SUCCESS, EDIT_IMAGE_FAILURE,
+    DELETE_IMAGE_REQUEST, DELETE_IMAGE_SUCCESS, DELETE_IMAGE_FAILURE} from "./mainListingActionTypes"
 import axios from "axios"
 
 export const get_listings_req = () => ({
@@ -134,5 +136,45 @@ export const post_img = (payload) => (dispatch) => {
           
         dispatch( post_img_failure(err) )
       });
+
+}
+
+// Edit image actions below:
+
+export const edit_img_req = () => ({
+    type: EDIT_IMAGE_REQUEST
+})
+
+export const edit_img_success = (payload) => ({
+    type: EDIT_IMAGE_SUCCESS,
+    payload
+})
+
+export const edit_img_failure = (payload) => ({
+    type: EDIT_IMAGE_FAILURE,
+    payload
+})
+
+export const edit_img = (payload, id) => (dispatch) => {
+
+    dispatch(edit_img_req())
+    axios({
+        method: 'put',
+        url: `https://5fbcebcf3f8f90001638c720.mockapi.io/api/v1/assets/${id}`,
+        data: {
+            "title": payload.image_title,
+            "description": payload.description,
+            "imageURL": payload.imgURL,
+        }
+      })
+      .then((res)=>{
+
+        dispatch( edit_img_success(res) )
+      })
+      .catch((err)=> {
+          
+        dispatch( edit_img_failure(err) )
+      });
+
 
 }

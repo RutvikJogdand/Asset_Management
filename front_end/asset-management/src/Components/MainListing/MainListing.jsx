@@ -79,7 +79,7 @@ function MainListing()
                                                     {item.title}
                                                 </Grid>
                                                 <Grid item xs={3} className={styles.icons}>
-                                                    <EditIcon className={styles.editBtn}/>
+                                                  <Link style={{textDecoration:"none"}} to={`/edit-image/${item.id}`}>  <EditIcon className={styles.editBtn}/> </Link>
                                                     <DeleteIcon className={styles.deleteBtn} />
                                                 </Grid>
                                             </Grid>
