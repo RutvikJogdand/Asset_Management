@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     itemTitle:{
         textAlign: "left",
         color: "black",
-        fontFamily:"'Montserrat', sans-serif"
+        fontFamily:"Montserrat, sans-serif"
     }
     
 
@@ -68,9 +68,10 @@ function MainListing()
 
                             return(
                                 <Grid item xs={12} sm={4} lg={3} md={3} key={uuidv4()} className={styles.itemContainer} >
-                                    <Link to={`/image/${item.id}`}>
                                         <Paper elevation={3} className={classes.paper}>
-                                            <img height="auto" width="100%" src={item.imageURL} alt={item.title} />
+                                            <Link to={`/image/${item.id}`}>
+                                                <img height="auto" width="100%" src={item.imageURL} alt={item.title} />
+                                            </Link>
                                             <Grid container className={classes.cardContentPadding}>
                                                 <Grid item className={classes.itemTitle} xs={9}>
                                                     {item.title}
@@ -81,7 +82,6 @@ function MainListing()
                                                 </Grid>
                                             </Grid>
                                         </Paper>
-                                        </Link>
                                 </Grid>
                             )
                     })

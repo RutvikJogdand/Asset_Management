@@ -1,5 +1,6 @@
 import {GET_LISTINGS_REQUEST, GET_LISTINGS_SUCCESS, GET_LISTINGS_FAILURE, 
-    SINGLE_IMAGE_REQUEST, SINGLE_IMAGE_SUCCESS, SINGLE_IMAGE_FAILURE} from "./mainListingActionTypes"
+    SINGLE_IMAGE_REQUEST, SINGLE_IMAGE_SUCCESS, SINGLE_IMAGE_FAILURE,
+    FETCH_COMMENTS_REQUEST, FETCH_COMMENTS_SUCCESS, FETCH_COMMENTS_FAILURE} from "./mainListingActionTypes"
 import axios from "axios"
 
 export const get_listings_req = () => ({
@@ -61,5 +62,36 @@ export const get_single_img = (payload) => (dispatch) => {
     .catch((err) => {
 
         dispatch(single_img_failure(err))
+    })
+}
+
+// Get comments actions below:
+export const fetch_comments_req = () => ({
+    type: FETCH_COMMENTS_REQUEST
+})
+
+export const fetch_comments_success = (payload) => ({
+    type: FETCH_COMMENTS_SUCCESS,
+    payload
+})
+
+export const fetch_comments_failure = (payload) => ({
+    type: FETCH_COMMENTS_FAILURE,
+    payload
+})
+
+export const fetch_comments = (payload) => (dispatch) => {
+
+    dispatch(fetch_comments_req())
+    axios
+    .get(`https://5fbcebcf3f8f90001638c720.mockapi.io/api/v1/assets/${payload}/comments`)
+    .then((res) => {
+
+        console.log(res, "SINGLE LISTING COMMENTS FETCHED")
+        dispatch(fetch_comments_success(res.data))
+    })
+    .catch((err) => {
+
+        dispatch(fetch_comments_failure(err))
     })
 }

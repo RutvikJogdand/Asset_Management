@@ -8,6 +8,7 @@
 .singleImageTitle > p{
     text-align: left;
     flex: 3;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .singleImageTitle > div{
