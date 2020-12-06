@@ -9,7 +9,7 @@ import { useDispatch,  useSelector } from "react-redux";
 function EditImage()
 {
     const singleListing = useSelector(state => state.listingsRoot.single_listing)
-    console.log(singleListing)
+    // console.log(singleListing)
     const history = useHistory()
     const params = useParams()
     const [image_title, setImageTitle] = React.useState("")
@@ -50,7 +50,7 @@ function EditImage()
     }
    
 
-        console.log(image_title, description, imgURL)
+        // console.log(image_title, description, imgURL)
     return(
         <>
             <div className={styles.AddImageTitle}>

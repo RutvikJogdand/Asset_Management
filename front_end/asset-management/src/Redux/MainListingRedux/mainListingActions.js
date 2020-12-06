@@ -27,7 +27,7 @@ export const get_listings = () => (dispatch) => {
     .get("https://5fbcebcf3f8f90001638c720.mockapi.io/api/v1/assets")
     .then((res) => {
 
-        console.log(res, "LISTINGS FETCHED")
+        // console.log(res, "LISTINGS FETCHED")
         dispatch(get_listings_success(res.data))
     })
     .catch((err) => {
@@ -59,7 +59,7 @@ export const get_single_img = (payload) => (dispatch) => {
     .get(`https://5fbcebcf3f8f90001638c720.mockapi.io/api/v1/assets/${payload}`)
     .then((res) => {
 
-        console.log(res, "SINGLE LISTING FETCHED")
+        // console.log(res, "SINGLE LISTING FETCHED")
         dispatch(single_img_success(res.data))
     })
     .catch((err) => {
@@ -90,7 +90,7 @@ export const fetch_comments = (payload) => (dispatch) => {
     .get(`https://5fbcebcf3f8f90001638c720.mockapi.io/api/v1/assets/${payload}/comments`)
     .then((res) => {
 
-        console.log(res, "SINGLE LISTING COMMENTS FETCHED")
+        // console.log(res, "SINGLE LISTING COMMENTS FETCHED")
         dispatch(fetch_comments_success(res.data))
     })
     .catch((err) => {
@@ -118,7 +118,7 @@ export const post_img_failure = (payload) => ({
 export const post_img = (payload) => (dispatch) => {
 
     dispatch(post_img_req())
-    console.log(payload)
+    // console.log(payload)
     axios({
         method: 'post',
         url: 'https://5fbcebcf3f8f90001638c720.mockapi.io/api/v1/assets/',
@@ -196,17 +196,17 @@ export const delete_img_failure = (payload) => ({
 
 export const delete_img = (payload) => (dispatch) => {
 
-    console.log(payload)
+    // console.log(payload)
     dispatch(delete_img_req())
     axios.delete(`https://5fbcebcf3f8f90001638c720.mockapi.io/api/v1/assets/${Number(payload)}`)
     .then( (res)=>{
 
-        console.log(res)
+        // console.log(res)
         axios
         .get("https://5fbcebcf3f8f90001638c720.mockapi.io/api/v1/assets")
         .then((res) => {
 
-            console.log(res, "LISTINGS FETCHED")
+            // console.log(res, "LISTINGS FETCHED")
             dispatch(get_listings_success(res.data))
         })
         .catch((err) => {

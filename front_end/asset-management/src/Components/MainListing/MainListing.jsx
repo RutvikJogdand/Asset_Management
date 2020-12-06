@@ -94,7 +94,7 @@ function MainListing()
         }
     }
 
-    console.log(itemID)
+    // console.log(itemID)
     
     return(
         <>

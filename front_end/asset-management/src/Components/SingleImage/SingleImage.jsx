@@ -7,6 +7,7 @@ import styles from "./SingleImage.module.css"
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
+import { v4 as uuidv4 } from 'uuid'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,11 +27,11 @@ function SingleImage()
     const params = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
-    console.log(params.id)
+    // console.log(params.id)
     
     const singleListing = useSelector(state => state.listingsRoot.single_listing)
     const commentsArr = useSelector(state => state.listingsRoot.comments_arr)
-    console.log(commentsArr)
+    // console.log(commentsArr)
     useEffect(() => {
 
         dispatch( get_single_img(params.id) )
@@ -73,7 +74,7 @@ function SingleImage()
                 commentsArr && commentsArr.map(item => {
 
                     return(
-                        <div className={styles.CommentBox}>
+                        <div key={uuidv4()} className={styles.CommentBox}>
                             <div className={styles.CommentUserDetails}>
                                 <Avatar alt="Remy Sharp" src={item.avatar} />
                                 <p> {item.name} </p>

@@ -50,7 +50,7 @@ function AddImage()
     }
    
 
-        console.log(image_title, description, imgURL)
+        // console.log(image_title, description, imgURL)
     return(
         <>
             <div className={styles.AddImageTitle}>
