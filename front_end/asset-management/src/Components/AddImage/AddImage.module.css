@@ -1,0 +1,53 @@
+.AddImageTitle{
+    display: flex;
+    border-bottom: 1px solid gray;
+    width: 87%;
+    margin: auto;
+}
+
+.AddImageTitle > p{
+    text-align: left;
+    flex: 3;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.AddImageTitle > div{
+    justify-self: right;
+    text-align: right;
+    flex: 1;
+    margin-top: 10px;
+}
+
+.formAndImageUpload{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.formAndImageUpload > div{
+    flex: 1;
+    margin-top: 50px;
+}
+
+.imageDetails > input{
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+.imageBox{
+
+    border: 1px solid black;
+    width: 400px;
+    min-width: 399px;
+    height: 300px;
+    margin-right: 20%;
+
+}
+
+.imageBox > input{
+    margin-top: 270px;
+}
+
+.SaveBtn{
+
+    margin-top: 50px;
+}

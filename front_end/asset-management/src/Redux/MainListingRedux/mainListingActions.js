@@ -1,6 +1,7 @@
 import {GET_LISTINGS_REQUEST, GET_LISTINGS_SUCCESS, GET_LISTINGS_FAILURE, 
     SINGLE_IMAGE_REQUEST, SINGLE_IMAGE_SUCCESS, SINGLE_IMAGE_FAILURE,
-    FETCH_COMMENTS_REQUEST, FETCH_COMMENTS_SUCCESS, FETCH_COMMENTS_FAILURE} from "./mainListingActionTypes"
+    FETCH_COMMENTS_REQUEST, FETCH_COMMENTS_SUCCESS, FETCH_COMMENTS_FAILURE,
+    POST_IMAGE_REQUEST, POST_IMAGE_SUCCESS, POST_IMAGE_FAILURE} from "./mainListingActionTypes"
 import axios from "axios"
 
 export const get_listings_req = () => ({
@@ -94,4 +95,44 @@ export const fetch_comments = (payload) => (dispatch) => {
 
         dispatch(fetch_comments_failure(err))
     })
+}
+
+// Post image actions below
+
+export const post_img_req = () => ({
+    type: POST_IMAGE_REQUEST
+})
+
+export const post_img_success = (payload) => ({
+    type: POST_IMAGE_SUCCESS,
+    payload
+})
+
+export const post_img_failure = (payload) => ({
+    type: POST_IMAGE_FAILURE,
+    payload
+})
+
+export const post_img = (payload) => (dispatch) => {
+
+    dispatch(post_img_req())
+    console.log(payload)
+    axios({
+        method: 'post',
+        url: 'https://5fbcebcf3f8f90001638c720.mockapi.io/api/v1/assets/',
+        data: {
+            "title": payload.image_title,
+            "description": payload.description,
+            "imageURL": payload.imgURL,
+        }
+      })
+      .then((res)=>{
+
+        dispatch( post_img_success(res) )
+      })
+      .catch((err)=> {
+          
+        dispatch( post_img_failure(err) )
+      });
+
 }
