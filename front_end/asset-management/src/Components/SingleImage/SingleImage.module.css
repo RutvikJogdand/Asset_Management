@@ -18,3 +18,41 @@
     margin-top: 10px;
 }
 
+.CommentBox{
+    width: 60%;
+    border: 1px solid rgba(197, 197, 197, 0.938);
+    margin: auto;
+}
+
+.CommentBox > p{
+    text-align: left;
+    padding-left: 40px;
+}
+
+.CommentUserDetails{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 30px;
+}
+
+.CommentUserDetails:first-child{
+    margin-top: 10px;
+}
+
+.CommentUserDetails > p{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: -0.1px;
+}
+
+textarea{
+    width: 60%;
+}
+
+.PostCommentBtn{
+    width: 60%;
+    margin: auto;
+    /* border: 1px solid black; */
+    text-align: right;
+}

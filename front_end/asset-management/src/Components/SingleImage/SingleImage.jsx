@@ -5,8 +5,9 @@ import {get_single_img, fetch_comments} from "./../../Redux/MainListingRedux/mai
 import Button from '@material-ui/core/Button';
 import styles from "./SingleImage.module.css"
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Avatar from '@material-ui/core/Avatar';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,6 +69,37 @@ function SingleImage()
                 </Grid>   
             </div>     
             <hr/>
+            {
+                commentsArr && commentsArr.map(item => {
+
+                    return(
+                        <div className={styles.CommentBox}>
+                            <div className={styles.CommentUserDetails}>
+                                <Avatar alt="Remy Sharp" src={item.avatar} />
+                                <p> {item.name} </p>
+                                <span> {new Date(item.dateCreated).toLocaleDateString()}  {new Date(item.dateCreated).toLocaleTimeString() } </span>
+                            </div>
+                            <p>
+                                {item.comment}
+                            </p>
+                        </div>
+                    )
+                })
+            }
+            <br/>
+            <br/>
+            <div>
+                <textarea placeholder="Post your comment" rows="10">
+
+                </textarea>
+                <br/>
+                <div className={styles.PostCommentBtn}>
+                    <Button  variant="contained" color="primary">
+                        Post Comment
+                    </Button>
+                </div>
+            </div>
+            <br/>
          </>
 
         

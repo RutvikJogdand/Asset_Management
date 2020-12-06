@@ -57,9 +57,11 @@ function MainListing()
     return(
         <>
             <div className={styles.AddImageDiv}>
-                <Button variant="contained" color="primary">
-                    Add Image
-                </Button>
+                <Link to="/add-image">
+                    <Button variant="contained" color="primary">
+                        Add Image
+                    </Button>
+                </Link>
             </div>
             <div className={classes.root}>
                 <Grid container spacing={3}>
@@ -67,7 +69,7 @@ function MainListing()
                     allListings && allListings.map(item => {
 
                             return(
-                                <Grid item xs={12} sm={4} lg={3} md={3} key={uuidv4()} className={styles.itemContainer} >
+                                <Grid item xs={12} sm={4} lg={4} md={4} key={uuidv4()} className={styles.itemContainer} >
                                         <Paper elevation={3} className={classes.paper}>
                                             <Link to={`/image/${item.id}`}>
                                                 <img height="auto" width="100%" src={item.imageURL} alt={item.title} />
@@ -88,6 +90,7 @@ function MainListing()
                 }
                 </Grid>
             </div>
+            
         </>
     )
 }
